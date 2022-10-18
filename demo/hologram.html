@@ -65,7 +65,7 @@ window.addEventListener( 'load', function() {
 		
 		
 		
-				var clippedLine = this.addLine( {
+				var line = this.addLine( {
 			locations : [
 				{ lat: 35, lng: 90 },
 				{ lat: -35, lng: 90 },
@@ -79,7 +79,7 @@ window.addEventListener( 'load', function() {
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		
-		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 1000 } );
+		line.animate( 'clip', 1, { loop: true, oscillate: true, duration: 1000 } );
 		
 		
 		

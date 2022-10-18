@@ -50,6 +50,58 @@ window.addEventListener( 'load', function() {
 			offset: -0.5
 		};
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+				var clippedLine = this.addLine( {
+			locations : [
+				{ lat: 35, lng: 90 },
+				{ lat: -35, lng: 90 },
+			],
+			clip: 0
+		} );
+		
+		this.addOverlay( {
+			content: 'clip: 0 - 1',
+			location : { lat: 35, lng: 90 },
+			className : 'docs-tip', depthScale: 0.75
+		} );
+		
+		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 1000 } );
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		//ხაზების დამატება
 		for ( var i in connections ) {			
 			line.locations = [ { lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] } ];

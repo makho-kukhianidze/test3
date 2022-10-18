@@ -54,18 +54,6 @@ window.addEventListener( 'load', function() {
 		for ( var i in connections ) {			
 			line.locations = [ { lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] } ];
 			this.addLine( line );
-			for ( var i=0; i < 8; i++ ) {
-			//ციმციმის ობიექტები
-			connections[i] = this.addSprite( {
-				image: 'hologram/hologram-shine.svg',
-				scale: 2.01,
-				offset: -0.5,
-				opacity: 0.5
-			} );
-
-			pulse( i );
-		}
-		
 		}
 		
 		

@@ -78,6 +78,80 @@ window.addEventListener( 'load', function() {
 	
 } );
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+			this.drawLine( [
+				{lat: -15.518, lng: -71.765},
+				{lat: -14.98, lng: -71.78},
+				{lat: -13.53, lng: -73.88},
+				{lat: -8.65, lng: -74.73},
+				{lat: -6.42, lng: -74.12},
+				{lat: -5.07, lng: -73.21},
+				{lat: -3.574, lng: -71.86},
+				{lat: -3.78, lng: -69.55},
+				{lat: -3.064, lng: -67.05},
+				{lat: -2.664, lng: -65.36},
+				{lat: -4.0, lng: -63.65},
+				{lat: -3.494, lng: -60.0},
+				{lat: -3.393, lng: -57.46},
+				{lat: -2.385, lng: -55.17},
+				{lat: -2.277, lng: -53.8},
+				{lat: -1.483, lng: -51.69},
+			],
+			{
+				strokeColor: 'green',
+				strokeWidth: 1.5
+			}
+		);
+		
+		
+		// point: equator
+		
+		for ( var i = -180; i <= 180; i+=5 ) {
+		
+			this.drawPoint(
+				{ lat: 0, lng: i },
+				{
+					size: 1.25,
+					color: 'RGBA(80,80,80,0.75)'
+				}
+			);
+		
+		}
+		
+		
+	} );
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 function getRandomInt(min, max) {
 	min = Math.ceil(min);

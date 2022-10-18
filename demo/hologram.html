@@ -47,8 +47,34 @@ window.addEventListener( 'load', function() {
 			color : 'red',
 			opacity: 10.35,
 			hairline: true,
-			offset: -0.5
+			offset: -20.5
 		};
+		
+		
+				for ( var i=0; i < line.length; i++ ) {
+			//ციმციმის ობიექტები
+			line[i] = this.addSprite( {
+				image: 'hologram/hologram-shine.svg',
+				scale: 2.01,
+				offset: -0.5,
+				opacity: 0.5
+
+			} );
+
+			pulse( i );
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		//ხაზების დამატება
 		for ( var i in connections ) {			

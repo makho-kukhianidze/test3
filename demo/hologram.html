@@ -44,37 +44,11 @@ window.addEventListener( 'load', function() {
 		// connections
 		
 		var line = {
-			color : 'red',
-			opacity: 10.35,
+			color : '#009CFF',
+			opacity: 0.35,
 			hairline: true,
-			offset: -20.5
+			offset: -0.5
 		};
-		
-		
-				for ( var i=0; i < line.length; i++ ) {
-			//ციმციმის ობიექტები
-			line[i] = this.addSprite( {
-				image: 'hologram/hologram-shine.svg',
-				scale: 2.01,
-				offset: -0.5,
-				opacity: 0.5
-
-			} );
-
-			pulse( i );
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		//ხაზების დამატება
 		for ( var i in connections ) {			
@@ -193,32 +167,6 @@ var connections = [
 ];
 
 
-	
-	
-	for ( var i = 0; i < connections.length; i++ ) {
-	
-		myearth.drawPoint(
-			capitals[i],
-			{
-				size: 1.8,
-				color: 'RGBA(0,150,0,1)'
-			}
-		);
-	
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 </script>
 
 </head>

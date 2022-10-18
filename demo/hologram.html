@@ -91,7 +91,7 @@ window.addEventListener( 'load', function() {
 	
 	
 	
-			this.drawLine( [
+			this.connections( [
 				{lat: -15.518, lng: -71.765},
 				{lat: -14.98, lng: -71.78},
 				{lat: -13.53, lng: -73.88},
@@ -120,7 +120,7 @@ window.addEventListener( 'load', function() {
 		
 		for ( var i = -180; i <= 180; i+=5 ) {
 		
-			this.drawPoint(
+			this.connections(
 				{ lat: 0, lng: i },
 				{
 					size: 1.25,

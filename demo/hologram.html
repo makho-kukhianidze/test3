@@ -89,15 +89,17 @@ window.addEventListener( 'load', function() {
 			locations : [
 				{ lat: 35, lng: 90 },
 				{ lat: -35, lng: 90 },
+				width: 312
 			],
 			clip: 0,
-			width: 12
+			width: 312
 		} );
 		
 		this.addOverlay( {
 			content: 'clip: 0 - 1',
 			location : { lat: 35, lng: 90 },
-			className : 'docs-tip', depthScale: 0.75
+			className : 'docs-tip', depthScale: 0.75,
+			width: 312
 		} );
 		
 		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 2 } );

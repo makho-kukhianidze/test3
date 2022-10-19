@@ -67,7 +67,7 @@ window.addEventListener( 'load', function() {
 				{ lat: -35, lng: 90 },
 				
 			],
-			color: green,
+				color: 'green',
 			clip: 0
 			
 		} );
@@ -76,6 +76,7 @@ window.addEventListener( 'load', function() {
 			content: 'clip: 0 - 1',
 			location : { lat: 35, lng: 90 },
 			className : 'colorGet', depthScale: 0.10,
+			color: 'green',
 		} );
 		
 		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 2000 } );

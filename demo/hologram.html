@@ -95,6 +95,7 @@ window.addEventListener( 'load', function() {
 		this.addOverlay( {
 			content: 'clip: 0 - 1',
 			location : { lat: 35, lng: 90 },
+			color: green,
 			className : 'docs-tip', depthScale: 075
 		} );
 		
@@ -103,16 +104,7 @@ window.addEventListener( 'load', function() {
 		
 		
 		
-		
-		
-			myearth = new Earth( "myearth", {
-		location: { lat: 0, lng: -40 },
-		autoRotate : true,
-		autoRotateDelay : 0,
-		autoRotateSpeed : 223,
-		transparent: true,
-		mapSeaColor : 'RGBA(0,150,255,0.6)',		
-	} );
+	
 		
 		
 		
@@ -121,27 +113,6 @@ window.addEventListener( 'load', function() {
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		var myanimation = myobject.animate(
-	'location',			// property to animate
-	{ lat: 40.689, lng: -74.046 },	// end value
-	{
-
-		relativeDuration : 1400,
-		easing : "out-quad",
-		complete : function () {
-			console.log( 'animation complete' );
-		}
-	}
-);
 		
 		
 		

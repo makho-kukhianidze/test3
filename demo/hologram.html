@@ -67,7 +67,11 @@ window.addEventListener( 'load', function() {
 				{ lat: -35, lng: 90 },
 				
 			],
-			clip: 0
+			clip: 0,
+				offsetFlow: 1,
+	width: 1,
+	color: 'white',
+	opacity: 0.75
 		} );
 		
 		this.addOverlay( {
@@ -79,7 +83,13 @@ window.addEventListener( 'load', function() {
 		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 2000 } );
 		
 		
+		
+			
 
+
+} );
+		
+		
 		
 	
 		

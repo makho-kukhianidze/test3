@@ -67,15 +67,16 @@ window.addEventListener( 'load', function() {
 				{ lat: -35, lng: 90 },
 				
 			],
-			clip: 0,
-			color: green,
-			background: pink
+			clip: 0
 		} );
 		
 		this.addOverlay( {
 			content: 'clip: 0 - 1',
 			location : { lat: 35, lng: 90 },
-			className : 'colorGet', depthScale: 1
+			className : 'colorGet', depthScale: 1,
+							color: 'RGBA(255,0,0,0.2)',
+				strokeWidth: 0.75,
+				strokeColor: 'RGBA(255,0,0,0.5)'
 		} );
 		
 		clippedLine.animate( 'clip', 1, { loop: true, oscillate: true, duration: 2000 } );
@@ -98,7 +99,6 @@ window.addEventListener( 'load', function() {
 		this.addOverlay( {
 			content: 'clip: 0 - 1',
 			location : { lat: 35, lng: 90 },
-			background: green,
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		

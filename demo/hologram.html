@@ -108,6 +108,32 @@ window.addEventListener( 'load', function() {
 		
 		
 		
+		var myanimation = myobject.animate(
+	'location',			// property to animate
+	{ lat: 40.689, lng: -74.046 },	// end value
+	{
+		duration : 200,		// animation properties
+		relativeDuration : 400,
+		easing : "out-quad",
+		complete : function () {
+			console.log( 'animation complete' );
+		}
+	}
+);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

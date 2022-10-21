@@ -10,12 +10,7 @@
 
 	
 	
-	
-	
-	
-	
-	
-	<style>
+		<style>
 	a.tooltip {outline:none; }
 a.tooltip strong {line-height:30px;}
 a.tooltip:hover {text-decoration:none;} 
@@ -42,60 +37,38 @@ a.tooltip:hover span{
 	
 	
 	
+	
+	
 <script>
 
-// if ( location.protocol == 'file:' ) {
-// 	alert( 'This demo does not work with the file protocol due to browser security restrictions.' );
-// }
+if ( location.protocol == 'file:' ) {
+	alert( 'This demo does not work with the file protocol due to browser security restrictions.' );
+}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 var myearth;
 var sprites = [];
 
 window.addEventListener( 'load', function() {
 
-	myearth = new Earth( 'myearth', {
-	
-		location : { lat: 20, lng : 20 },
-	
-		light: 'none',
-
-		mapImage: 'hologram/hologram-map.svg',
-		transparent: true,
-		
-		autoRotate : true,
-		autoRotateSpeed: 0.9, // დედამიწის ბრუნვის სიჩქარე.
-		autoRotateDelay: 40,
-		autoRotateStart: 70,			
-		
-	} );
 	
 	
-	myearth.addEventListener( "ready", function() {
-
-		this.startAutoRotate();
-
-		// connections
-
-
-
-
-
-
-
-
-		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 		// clip
@@ -237,47 +210,98 @@ window.addEventListener( 'load', function() {
 
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	myearth = new Earth( 'myearth', {
+	
+		location : { lat: 20, lng : 20 },
+	
+		light: 'none',
 
+		mapImage: 'hologram/hologram-map.svg',
+		transparent: true,
+		
+		autoRotate : true,
+		autoRotateSpeed: 1.2,
+		autoRotateDelay: 100,
+		autoRotateStart: 2000,			
+		
+	} );
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	myearth.addEventListener( "ready", function() {
 
+		this.startAutoRotate();
 
-
-
+		// connections
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-
-
-
 		var line = {
-			color : 'red',
+			color : '#009CFF',
 			opacity: 0.35,
 			hairline: true,
-
-
+			offset: -0.5
 		};
-
-
 		
-		//ხაზების დამატება
 		for ( var i in connections ) {			
 			line.locations = [ { lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] } ];
 			this.addLine( line );
@@ -288,14 +312,12 @@ window.addEventListener( 'load', function() {
 		// add 8 shine sprites
 		
 		for ( var i=0; i < 8; i++ ) {
-			//ციმციმის ობიექტები
 			sprites[i] = this.addSprite( {
 				image: 'hologram/hologram-shine.svg',
-				scale: 2.01,
+				scale: 0.01,
 				offset: -0.5,
 				opacity: 0.5
 			} );
-
 			pulse( i );
 		}
 		
@@ -312,20 +334,13 @@ function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min)) + min;
 }
 
-//ციმციმი
+
 function pulse( index ) {
-	//შემთხვევითი ლოკაცია
-	 var random_location = connections[ getRandomInt(0, connections.length-1) ];
-
-
-
-
-	 //წერტილებზე ლოკაციების მინიჭება
-	 sprites[index].location = { lat: random_location[0] , lng: random_location[1] };
+	var random_location = connections[ getRandomInt(0, connections.length-1) ];
+	sprites[index].location = { lat: random_location[0] , lng: random_location[1] };
 	
-	//მიმდევრობით ციმციმი
-	 sprites[index].animate( 'scale', 1.5, { duration: 320, complete : function(){
-		this.animate( 'scale', 0.1, { duration: 320, complete : function(){
+	sprites[index].animate( 'scale', 0.5, { duration: 320, complete : function(){
+		this.animate( 'scale', 0.01, { duration: 320, complete : function(){
 			setTimeout( function(){ pulse( index ); }, getRandomInt(100, 400) );
 		} });
 	} });
@@ -333,9 +348,8 @@ function pulse( index ) {
 
 
 
-locations conntected by lines and places where hologram shines appear
+// locations conntected by lines and places where hologram shines appear
 
-ლოკაციები
 var connections = [
 	[59.651901245117,17.918600082397,	41.8002778,12.2388889],
 	[59.651901245117,17.918600082397,	51.4706,-0.461941],
@@ -345,7 +359,7 @@ var connections = [
 	
 	[30.12190055847168,31.40559959411621, -1.31923997402,36.9277992249],
 	[30.12190055847168,31.40559959411621, 25.2527999878,55.3643989563],
-	 [30.12190055847168,31.40559959411621, 41.8002778,12.2388889],
+	[30.12190055847168,31.40559959411621, 41.8002778,12.2388889],
 
 	[28.566499710083008,77.10310363769531,	7.180759906768799,79.88410186767578],
 	[28.566499710083008,77.10310363769531,	40.080101013183594,116.58499908447266],
@@ -395,9 +409,6 @@ var connections = [
 	[55.5914993286,37.2615013123, 40.080101013183594,116.58499908447266],
 	[55.5914993286,37.2615013123, 25.2527999878,55.3643989563],
 ];
-
-
-
 
 
 </script>

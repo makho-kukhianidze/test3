@@ -375,8 +375,8 @@ window.addEventListener( 'load', function() {
 			sprites[i] = this.addSprite( {
 				image: 'hologram/hologram-shine.svg',
 				scale: 0.01,
-				offset: -0.5,
-				opacity: 0.5
+				offset: 0,
+				opacity: 0.0
 			} );
 			pulse( i );
 		}
@@ -412,7 +412,8 @@ function pulse( index ) {
 
 var connections = [
 	[39,38],
-	[21,15]
+	[21,15],
+	[50,29],
 
 ];
 

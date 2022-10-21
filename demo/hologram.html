@@ -238,6 +238,7 @@ window.addEventListener( 'load', function() {
 	
 
 
+
 		
 
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -318,7 +319,7 @@ content: `
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		
-		clippedLine.animate( 'clip', 1, { loop: true, duration: 3000 } );	
+		clippedLine.animate( 'clip', 1, { loop: true, duration: 1000 } );	
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
@@ -485,7 +486,7 @@ content: `
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		
-		clippedLine.animate( 'clip', 1, { loop: true,  duration: 3000 } );	
+		clippedLine.animate( 'clip', 1, { loop: true,  duration: 1000 } );	
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
@@ -628,8 +629,8 @@ content: `
 		// clip
 		var clippedLine = this.addLine( {
 			locations : [
-			{ lat: 50, lng: 60 },
-			{ lat: 60, lng: 70 },
+			{ lat: 60, lng: 50 },
+			{ lat: 7, lng: 81 },
 			],
 			clip: 0,
 			width: 0.7,
@@ -685,19 +686,19 @@ content: `
 			`,
 			
 			
-			location : { lat: 46, lng: 80  },
+			location : { lat: 66, lng: 43  }, // ტექსტის ლოკაცი lat - სიმაღლე - სიდაბლე || lng - მარჯვენა - მარცხენა.
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		
-		clippedLine.animate( 'clip', 1, { loop: true,  duration: 3000 } );	
+		clippedLine.animate( 'clip', 1, { loop: true,  duration: 1000 } );	
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
 		// endWidth
 		this.addLine( {
 			locations : [
-			{ lat: 46, lng: 90 },
-			{ lat: 21, lng: 15 },
+			{ lat: 60, lng: 50 },
+			{ lat: 7, lng: 81 },
 			],
 			color:"#1E90FF",
 			width: 0.2
@@ -706,7 +707,7 @@ content: `
 		this.addOverlay( {
 content: `
 
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade')">ჩრდილოეთ კორეა</a>
+			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade')">შრი-ლანკა</a>
   </p>
 
   
@@ -742,7 +743,7 @@ content: `
 	</div>
   <div id="fade" class="black_overlay"></div>
 			`,
-			location : { lat: 20, lng: 12 },
+			location : { lat: 7, lng: 78 },
 			className : 'docs-tip', depthScale: 0.75
 		} );
 		
@@ -753,28 +754,6 @@ content: `
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
 		
 		
 		

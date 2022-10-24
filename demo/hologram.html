@@ -826,7 +826,7 @@ function pulse( index ) {
 	
 	sprites[index].animate( 'scale', 0.5, { duration: 320, complete : function(){
 		this.animate( 'scale', 0.01, { duration: 320, complete : function(){
-			setTimeout( function(){ pulse( index ); }, getRandomInt(100, 400) );
+			setTimeout( function(){ pulse( index ); }, getRandomInt(100, 900) );
 		} });
 	} });
 }

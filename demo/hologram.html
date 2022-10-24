@@ -774,82 +774,81 @@ content: `
 		
 		
 		
-		
-		
-		
-		
-		// connections
-		
-		var line = {
-			color : '#009CFF',
-			opacity: 0.35,
-			hairline: true,
-			offset: -0.5
-		};
-		
-		for ( var i in connections ) {			
-			line.locations = [ { lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] } ];
-			this.addLine( line );
+			// connections
+
+				var line = {
+					color: '#009CFF',
+					opacity: 0.35,
+					hairline: true,
+					offset: -0.5
+				};
+
+				for (var i in connections) {
+					line.locations = [{ lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] }];
+					this.addLine(line);
+				}
+
+
+
+				// add 8 shine sprites
+
+				for (var i = 0; i < 8; i++) {
+					sprites[i] = this.addSprite({
+						image: 'hologram/hologram-shine.svg',
+						scale: 2,
+						offset: 0,
+						opacity: 0.3
+					});
+					pulse(i);
+				}
+
+
+			});
+
+
+		});
+
+
+		function getRandomInt(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min)) + min;
 		}
-		
-		
-		
-		// add 8 shine sprites
-		
-		for ( var i=0; i < 8; i++ ) {
-			sprites[i] = this.addSprite( {
-				image: 'hologram/hologram-shine.svg',
-				scale: 2,
-				offset: 0,
-				opacity: 1,
-				color: 'red'
-			} );
-			pulse( i );
+
+
+		function pulse(index) {
+			var random_location = connections[getRandomInt(0, connections.length - 1)];
+			sprites[index].location = { lat: random_location[0], lng: random_location[1] };
+
+			sprites[index].animate('scale', 0.5, {
+				duration: 320, complete: function () {
+					this.animate('scale', 0.01, {
+						duration: 320, complete: function () {
+							setTimeout(function () { pulse(index); }, getRandomInt(100, 400));
+						}
+					});
+				}
+			});
 		}
-		
-		
-	} );
-	
-	
-} );
-
-
-function getRandomInt(min, max) {
-	min = Math.ceil(min);
-	max = Math.floor(max);
-	return Math.floor(Math.random() * (max - min)) + min;
-}
-
-
-function pulse( index ) {
-	var random_location = connections[ getRandomInt(0, connections.length-1) ];
-	sprites[index].location = { lat: random_location[0] , lng: random_location[1] };
-	
-	sprites[index].animate( 'scale', 0.5, { duration: 320, complete : function(){
-		this.animate( 'scale', 0.05, { duration: 320, complete : function(){
-			setTimeout( function(){ pulse( index ); }, getRandomInt(100, 400) );
-		} });
-	} });
-}
 
 
 
-// locations conntected by lines and places where hologram shines appear
+		// locations conntected by lines and places where hologram shines appear
 
-var connections = [
-	[39,38],
-	[21,15],
-	[41,45],
-	[41,15],
-	[47,12],
-	
-	
+		var connections = [
+			[39, 38],
+			[21, 15],
+			[41, 45],
+			[41, 15],
+			[47, 12],
 
 
-];
 
 
-</script>
+		];
+
+
+	</script>
 
 </head>
 
@@ -860,4 +859,5 @@ var connections = [
 	</div>
 
 </body>
+
 </html>

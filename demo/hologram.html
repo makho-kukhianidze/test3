@@ -801,7 +801,7 @@ content: `
 				image: 'hologram/hologram-shine.svg',
 				scale: 2,
 				offset: 0,
-				opacity: 8,
+				opacity: 1,
 				color: 'red'
 			} );
 			pulse( i );
@@ -825,7 +825,7 @@ function pulse( index ) {
 	var random_location = connections[ getRandomInt(0, connections.length-1) ];
 	sprites[index].location = { lat: random_location[0] , lng: random_location[1] };
 	
-	sprites[index].animate( 'scale', 0.5, { duration: 320, complete : function(){
+	sprites[index].animate( 'scale', 0.05, { duration: 320, complete : function(){
 		this.animate( 'scale', 0.05, { duration: 320, complete : function(){
 			setTimeout( function(){ pulse( index ); }, getRandomInt(100, 400) );
 		} });

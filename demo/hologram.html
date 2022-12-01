@@ -244,21 +244,23 @@ window.addEventListener( 'load', function() {
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 		// clip
 		var clippedLine = this.addLine( {
-			locations : [
-			{ lat: 41, lng: 45 },
-			{ lat: 41, lng: 15 },
-			],
-			clip: 0,
-			width: 0.7,
-			color: "#1E90FF",
-			//---------------//
-// 			dashed: true,
-// 			dashSize: 0.25,
-// 			dashRatio: 0.5,
-// 			dashOffset: 0.25,
-			//---------------//
-        		offsetFlow: 2,
-			offsetEasing: 'out-quad'
+        locations : [
+        // ხაზის დასაწყისი.
+        { lat: 52, lng: 10 },  // lat - ის რიცხვები  მატებაში მიდის  -  ზემოთ  || კლებაში - ქვემოთ . lng - ის რიცხვები ზემოთ - მარჯვნივ || ქვემოთ მარცხნივ.
+        // ხაზის დასსასრული.
+        { lat: 42, lng: 43 },
+        
+        ],
+        clip: 0,
+        width: 0.2,
+        color: "#1E90FF",
+        //---------------//
+  			// dashed: true,
+  			// dashSize: 0.25,
+  			// dashRatio: 0.5,
+  			// dashOffset: 0.25,
+        //---------------//
+        offsetFlow: 1,
 			
 		} );
 		

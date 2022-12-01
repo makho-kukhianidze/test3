@@ -443,9 +443,9 @@ content: `
 				for (var i = 0; i < 8; i++) {
 					sprites[i] = this.addSprite({
 						image: '',
-						scale: 2,
+						scale: 0,
 						offset: 0,
-						opacity: 0.3
+						opacity: 0
 					});
 					pulse(i);
 				}
@@ -468,10 +468,10 @@ content: `
 			var random_location = connections[getRandomInt(0, connections.length - 1)];
 			sprites[index].location = { lat: random_location[0], lng: random_location[1] };
 
-			sprites[index].animate('scale', 0.5, {
+			sprites[index].animate('scale', 0, {
 				duration: 320, complete: function () {
-					this.animate('scale', 0.01, {
-						duration: 320, complete: function () {
+					this.animate('scale', 0, {
+						duration: 0, complete: function () {
 							setTimeout(function () { pulse(index); }, getRandomInt(100, 400));
 						}
 					});

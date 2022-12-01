@@ -340,59 +340,70 @@ content: `
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
-		// endWidth
-		this.addLine( {
-			locations : [
-			{ lat: 41, lng: 45 },
-			{ lat: 41, lng: 15 },
-			],
-			color:"#1E90FF",
-			width: 0.2
-		} );
-		
-		this.addOverlay( {
-		content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('napoli').style.display='block';document.getElementById('fade')">ნაპოლი</a>
-  </p>
-
-  
-  <div id="napoli" style="width:600px; height:600px" class="white_content">
 	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('napoli').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                napoli's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-	    <a href="#">ლინკი </a>
-        </div>
+  
+      // endWidth
+      this.addLine( {
+        locations : [
+        { lat: 41, lng: 45 },
+        { lat: 51, lng: 12 },
+        ],
+        color:"#1E90FF",
+        width: 0,
+        offsetFlow: 2,
+      } );
+      
+      this.addOverlay( {
+      content: `
+  
+        <p> <a style="color:white; text-decoration:none;" href="javascript:void(0)" onclick="document.getElementById('Solingen').style.display='block';document.getElementById('fade')">Solingen</a>
+    </p>
+  
+    
+    <div id="Solingen" style="width:600px; height:600px" class="white_content">
+    
+  
+  
+      <div class="cardLocation">
+          <div class="close_style">
+              <div>
+                  <a href="javascript:void(0)"
+                      onclick="document.getElementById('Solingen').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+              </div>
+          </div>
+  
+          <div>
+              <div>
+                  <img src="../../assets/globus-template/images/country-card-img/1.jpg" alt="Solingen">
+              </div>
+  
+              <p class="card-text">
+              Sol's favorable trade location, however, did not  bode well for its survival. Located
+                  strategically in the heart of the Caucasus between Europe and Asia, Solingen became an object of rivalry
+                  among the region's.
+              </p>
+        <a href="#">ლინკი </a>
+          </div>
+      </div>
+  
+  
+  
+  
+  
     </div>
+    <div id="fade" class="black_overlay"></div>
 
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,	location : 			{ lat: 47, lng: 12 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
+        `,	
+        location : 			{ lat: 54, lng: -10 },
+        // className : 'docs-tip', depthScale: 0.75  -  დამატებითი ხაზი - გავაქრე.
+      } );
+      
+    //--------------------------------------------------------------------------------------------------------------------------------------------------//
+  
+  
+  
+  
+  
 	//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 

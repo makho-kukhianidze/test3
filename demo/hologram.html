@@ -1,867 +1,528 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>Miniature Earth | Hologram Demo</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
+  
+        
 
-<link rel="stylesheet" href="hologram/style.css">
-<script src="../miniature.earth.core.js"></script>
 
-	
-<!--  კურსორის მიტანისას გამოჩნდება ქალაქების სურათები	-->
-<!-- 		<style>
-<!-- 	a.tooltip {outline:none; }
-a.tooltip strong {line-height:30px;}
-a.tooltip:hover {text-decoration:none;} 
-a.tooltip span {
-    z-index:10;display:none; 
-    margin-top:-175px; margin-left:-250px;   
-}
-a.tooltip:hover span{
-    display:inline; position:absolute; 
-}
 
-.callout {z-index:20;position:absolute;border:0;top:-34px;left:120px;}
+
+
+  
+  var myearth;
+  var sprites = [];
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  window.addEventListener( 'load', function() {
+  
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    myearth = new Earth( 'myearth', {
+    
+      location : { lat: 20, lng : 20 },
+    
+      light: 'none',
+  
+      mapImage: '../../assets/globus-template/images/hologram/hologram-map.svg',
+      transparent: true,
+      
+      autoRotate : true,
+      autoRotateSpeed: 0.8, // გლობუსის სიჩქარე.
+      autoRotateDelay: 555555100, // გლობუსის დაყოვნება.
+      autoRotateStart: 9000,			
 
-
-		</style>	 -->
-<!--  კურსორის მიტანისას გამოჩნდება ქალაქების სურათები	-->
-		
-			
-			
-			
-			
-			
-			
-			
-			
-	<style>
-	.black_overlay {
-  display: none;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1001;
-  -moz-opacity: 0.8;
-  opacity: .80;
-  filter: alpha(opacity=80);
-}
-.white_content {
-  display: none;
-  z-index: 1002;
-  overflow: auto;
-}
-
-		
-		
-		
-	.cardLocation {
-		width: 380px;
-		background: #ddd9d9;
-		padding: 12px;
-		border-radius: 2%;
-		border: 2px solid rgb(187, 184, 184);
-	}
-
-	.cardLocation img {
-		width: 250px;
-		height: 250px;
-		float: right;
-		margin: 12px;
-	}
-
-	.card-text {
-		text-align: justify;
-		font-size: 18px;
-		color:black;
-	}
-
-	.close_style {
-		display: flex;
-		justify-content: flex-end;
-	}
-</style>		
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-<script>			
-			
-			
-
-if ( location.protocol == 'file:' ) {
-	alert( 'This demo does not work with the file protocol due to browser security restrictions.' );
-}
-
-
-var myearth;
-var sprites = [];
-
-window.addEventListener( 'load', function() {
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	myearth = new Earth( 'myearth', {
-	
-		location : { lat: 20, lng : 20 },
-	
-		light: 'none',
-
-		mapImage: 'hologram/hologram-map.svg',
-		transparent: true,
-		
-		autoRotate : true,
-		autoRotateSpeed: 1.2, // გლობუსის სიჩქარე.
-		autoRotateDelay: 100, // გლობუსის დაყოვნება.
-		autoRotateStart: 2000,			
-		
-	} );
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	myearth.addEventListener( "ready", function() {
-
-		this.startAutoRotate();
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	
-	
-	
+    } );
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    myearth.addEventListener( "ready", function() {
+  
+      this.startAutoRotate();
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+  
+  
+  
+      
+  
+      //--------------------------------------------------------------------------------------------------------------------------------------------------//
+      // clip
+      var clippedLine = this.addLine( {
+        locations : [
+        // ხაზის დასაწყისი.
+        { lat: 52, lng: 10 },  // lat - ის რიცხვები  მატებაში მიდის  -  ზემოთ  || კლებაში - ქვემოთ . lng - ის რიცხვები ზემოთ - მარჯვნივ || ქვემოთ მარცხნივ.
+        // ხაზის დასსასრული.
+        { lat: 42, lng: 43 },
+        
+        ],
+        clip: 0,
+        width: 0.2,
+        color: "#1E90FF",
+        //---------------//
+  			// dashed: true,
+  			// dashSize: 0.25,
+  			// dashRatio: 0.5,
+  			// dashOffset: 0.25,
+        //---------------//
+        offsetFlow: 1,
+      
+        
+      } );
 
 
 
-		
 
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-		// clip
-		var clippedLine = this.addLine( {
-			locations : [
-			{ lat: 41, lng: 45 },
-			{ lat: 41, lng: 15 },
-			],
-			clip: 0,
-			width: 0.7,
-			color: "#1E90FF",
-			//---------------//
-// 			dashed: true,
-// 			dashSize: 0.25,
-// 			dashRatio: 0.5,
-// 			dashOffset: 0.25,
-			//---------------//
-        		offsetFlow: 2,
-			offsetEasing: 'out-quad'
-			
-		} );
-		
-		this.addOverlay( {
-			
-			
-			
-			
-			
-			
-			
-content: `
 
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('tbilisi').style.display='block';document.getElementById('fade')">თბილისი</a>
-  </p>
+
+
+            // endWidth
+            this.addLine( {
+              locations : [
+              { lat: 41, lng: 45 },
+              { lat: 51, lng: 12 },
+              ],
+              color:"#1E90FF",
+              width: 0,
+              offsetFlow: 2,
+
+
+              
+            } );
+      
+      this.addOverlay( {
+        
+        
+        
+
+        
+        
+        
+  content: `
+  
+        <p> <a style="color:white; text-decoration:none;" href="javascript:void(0)" onclick="document.getElementById('tbilisi').style.display='block';document.getElementById('fade')">Tbilisi</a>
+    </p>
+  
+    
+    <div id="tbilisi" style="width:600px; height:600px" class="white_content">
+    
+  
+  
+      <div class="cardLocation">
+          <div class="close_style">
+              <div>
+                  <a href="javascript:void(0)"
+                      onclick="document.getElementById('tbilisi').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+              </div>
+          </div>
+  
+          <div>
+              <div>
+                <img src="../../assets/globus-template/images/country-card-img/2.jpg" alt="tbilis">
+              </div>
+  
+              <p class="card-text">
+                  Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
+                  strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
+                  among the region's.
+              </p>
+        <a href="#">ლინკი </a>
+          </div>
+      </div>
+  
+  
+  
+  
+  
+    </div>
+    <div id="fade" class="black_overlay"></div>
+        `,
+        
+        
+        
+        
+
+        
+        
+        location : { lat: 43, lng: 30 },
+        className : 'docs-tip'
+      } );
+      
+      clippedLine.animate( 'clip', 1, { loop: true, duration: 3000 } );	
+      //--------------------------------------------------------------------------------------------------------------------------------------------------//
+  
+  
+      // endWidth
+      this.addLine( {
+        locations : [
+        { lat: 41, lng: 45 },
+        { lat: 51, lng: 12 },
+        ],
+        color:"#1E90FF",
+        width: 0,
+        offsetFlow: 2,
+      } );
+      
+      this.addOverlay( {
+      content: `
+  
+        <p> <a style="color:white; text-decoration:none;" href="javascript:void(0)" onclick="document.getElementById('Solingen').style.display='block';document.getElementById('fade')">Solingen</a>
+    </p>
+  
+    
+    <div id="Solingen" style="width:600px; height:600px" class="white_content">
+    
+  
+  
+      <div class="cardLocation">
+          <div class="close_style">
+              <div>
+                  <a href="javascript:void(0)"
+                      onclick="document.getElementById('Solingen').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
+              </div>
+          </div>
+  
+          <div>
+              <div>
+                  <img src="../../assets/globus-template/images/country-card-img/1.jpg" alt="Solingen">
+              </div>
+  
+              <p class="card-text">
+              Sol's favorable trade location, however, did not  bode well for its survival. Located
+                  strategically in the heart of the Caucasus between Europe and Asia, Solingen became an object of rivalry
+                  among the region's.
+              </p>
+        <a href="#">ლინკი </a>
+          </div>
+      </div>
+  
+  
+  
+  
+  
+    </div>
+    <div id="fade" class="black_overlay"></div>
+
+        `,	
+        location : 			{ lat: 54, lng: -10 },
+        // className : 'docs-tip', depthScale: 0.75  -  დამატებითი ხაზი - გავაქრე.
+      } );
+      
+    //--------------------------------------------------------------------------------------------------------------------------------------------------//
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    
+    
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+  
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+        // connections
+  
+          var line = {
+            color: '#009CFF',
+            opacity: 0.35,
+            hairline: true,
+            offset: -0.5
+          };
+  
+          for (var i in connections) {
+            line.locations = [{ lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] }];
+            this.addLine(line);
+          }
+  
+  
+  
+          // add 8 shine sprites
+  
+          for (var i = 0; i < 8; i++) {
+            sprites[i] = this.addSprite({
+              image: '../../assets/globus-template/images/hologram/circle.png',
+              scale: 2,
+              offset: 0,
+              opacity: 0.3
+            });
+            pulse(i);
+          }
+  
+  
+        });
+  
+  
+      });
+  
+  
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
+  
+  
+      function pulse(index) {
+        var random_location = connections[getRandomInt(0, connections.length - 1)];
+        sprites[index].location = { lat: random_location[0], lng: random_location[1] };
+  
+        sprites[index].animate('scale', 2.5, {
+          duration: 320, complete: function () { 
+            this.animate('scale', 0.01, {
+              duration: 320, complete: function () {
+                setTimeout(function () { pulse(index); }, getRandomInt(100, 400));
+              }
+            });
+          }
+        });
+      }
+  
+  
+  
+      // locations conntected by lines and places where hologram shines appear
+  
+      var connections = [
+        [42, 43],
+
+     
+
+        [52,11],
+        [41, 45],
 
   
-  <div id="tbilisi" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('tbilisi').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-	    <a href="#">ლინკი </a>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,
-			
-			
-			
-			
-			
-			
-			
-			location : { lat: 47, lng: 40 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-		clippedLine.animate( 'clip', 1, { loop: true, duration: 1000 } );	
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-		// endWidth
-		this.addLine( {
-			locations : [
-			{ lat: 41, lng: 45 },
-			{ lat: 41, lng: 15 },
-			],
-			color:"#1E90FF",
-			width: 0.2
-		} );
-		
-		this.addOverlay( {
-		content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('napoli').style.display='block';document.getElementById('fade')">ნაპოლი</a>
-  </p>
-
   
-  <div id="napoli" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('napoli').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                napoli's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-	    <a href="#">ლინკი </a>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,	location : 			{ lat: 47, lng: 12 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-	//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-
-
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-		// clip
-		var clippedLine = this.addLine( {
-			locations : [
-			{ lat: 39, lng: 38 },
-			{ lat: 21, lng: 15 },
-			],
-			clip: 0,
-			width: 0.7,
-			color: "#1E90FF",
-			//---------------//
-// 			dashed: true,
-// 			dashSize: 0.25,
-// 			dashRatio: 0.5,
-// 			dashOffset: 0.25,
-			//---------------//
-			offsetFlow: 0,
-			offsetEasing: 'linear'
-		} );
-		
-		this.addOverlay( {
-content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('turkey').style.display='block';document.getElementById('fade')">თურქეთი</a>
-  </p>
-
+      ];
   
-  <div id="turkey" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('turkey').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-	    <a href="#">ლინკი </a>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,
-			
-			
-			location : { lat: 39, lng: 38  },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-		clippedLine.animate( 'clip', 1, { loop: true,  duration: 1000 } );	
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-		// endWidth
-		this.addLine( {
-			locations : [
-			{ lat: 39, lng: 38 },
-			{ lat: 21, lng: 15 },
-			],
-			color:"#1E90FF",
-			width: 0.2
-		} );
-		
-		this.addOverlay( {
-content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('ghana').style.display='block';document.getElementById('fade')">განა</a>
-  </p>
-
-  
-  <div id="ghana" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('ghana').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-	    <a href="#">ლინკი </a>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,
-			location : { lat: 20, lng: 12 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-	//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-
-
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-		// clip
-		var clippedLine = this.addLine( {
-			locations : [
-			{ lat: 60, lng: 50 },
-			{ lat: 7, lng: 81 },
-			],
-			clip: 0,
-			width: 0.7,
-			color: "#1E90FF",
-			//---------------//
-// 			dashed: true,
-// 			dashSize: 0.25,
-// 			dashRatio: 0.5,
-// 			dashOffset: 0.25,
-			//---------------//
-			offsetFlow: 0,
-			offsetEasing: 'linear'
-		} );
-		
-		this.addOverlay( {
-content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade')">რუსეთი</a>
-  </p>
-
-  
-  <div id="light" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,
-			
-			
-			location : { lat: 66, lng: 43  }, // ტექსტის ლოკაცი lat - სიმაღლე - სიდაბლე || lng - მარჯვენა - მარცხენა.
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-		clippedLine.animate( 'clip', 1, { loop: true,  duration: 1000 } );	
-		//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-		// endWidth
-		this.addLine( {
-			locations : [
-			{ lat: 60, lng: 50 },
-			{ lat: 7, lng: 81 },
-			],
-			color:"#1E90FF",
-			width: 0.2
-		} );
-		
-		this.addOverlay( {
-content: `
-
-			<p> <a style="color:white;" href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade')">შრი-ლანკა</a>
-  </p>
-
-  
-  <div id="light" style="width:600px; height:600px" class="white_content">
-	
-
-
-    <div class="cardLocation">
-        <div class="close_style">
-            <div>
-                <a href="javascript:void(0)"
-                    onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">Close</a>
-            </div>
-        </div>
-
-        <div>
-            <div>
-                <img src="images/Tbilisi_old_town.jpg" alt="Longtail boat in Thailand">
-            </div>
-
-            <p class="card-text">
-                Tbilisi's favorable trade location, however, did not  bode well for its survival. Located
-                strategically in the heart of the Caucasus between Europe and Asia, Tbilisi became an object of rivalry
-                among the region's.
-            </p>
-        </div>
-    </div>
-
-
-
-
-
-	</div>
-  <div id="fade" class="black_overlay"></div>
-			`,
-			location : { lat: 7, lng: 78 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-	//--------------------------------------------------------------------------------------------------------------------------------------------------//
-
-
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-			// connections
-
-				var line = {
-					color: '#009CFF',
-					opacity: 0.35,
-					hairline: true,
-					offset: -0.5
-				};
-
-				for (var i in connections) {
-					line.locations = [{ lat: connections[i][0], lng: connections[i][1] }, { lat: connections[i][2], lng: connections[i][3] }];
-					this.addLine(line);
-				}
-
-
-
-				// add 8 shine sprites
-
-				for (var i = 0; i < 8; i++) {
-					sprites[i] = this.addSprite({
-						image: 'hologram/hologram-shine.svg',
-						scale: 2,
-						offset: 0,
-						opacity: 0.3
-					});
-					pulse(i);
-				}
-
-
-			});
-
-
-		});
-
-
-		function getRandomInt(min, max) {
-			min = Math.ceil(min);
-			max = Math.floor(max);
-			return Math.floor(Math.random() * (max - min)) + min;
-		}
-
-
-		function pulse(index) {
-			var random_location = connections[getRandomInt(0, connections.length - 1)];
-			sprites[index].location = { lat: random_location[0], lng: random_location[1] };
-
-			sprites[index].animate('scale', 0.5, {
-				duration: 320, complete: function () {
-					this.animate('scale', 0.01, {
-						duration: 320, complete: function () {
-							setTimeout(function () { pulse(index); }, getRandomInt(100, 400));
-						}
-					});
-				}
-			});
-		}
-
-
-
-		// locations conntected by lines and places where hologram shines appear
-
-		var connections = [
-			[39, 38],
-			[21, 15],
-			[41, 45],
-			[41, 15],
-			[47, 12],
-
-
-
-
-		];
-
-
-	</script>
-
-</head>
-
-<body>
-
-	<div id="myearth">
-		<div id="glow"></div>
-	</div>
-
-</body>
-
-</html>

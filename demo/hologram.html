@@ -264,6 +264,21 @@ window.addEventListener( 'load', function() {
 			
 		} );
 		
+		
+		            // endWidth
+            this.addLine( {
+              locations : [
+              { lat: 41, lng: 45 },
+              { lat: 51, lng: 12 },
+              ],
+              color:"#1E90FF",
+              width: 0,
+              offsetFlow: 2,
+
+
+              
+            } );
+		
 		this.addOverlay( {
 			
 			
@@ -317,12 +332,11 @@ content: `
 			
 			
 			
-			
-			location : { lat: 47, lng: 40 },
-			className : 'docs-tip', depthScale: 0.75
-		} );
-		
-		clippedLine.animate( 'clip', 1, { loop: true, duration: 1000 } );	
+        location : { lat: 43, lng: 30 },
+        className : 'docs-tip'
+      } );
+      
+      clippedLine.animate( 'clip', 1, { loop: true, duration: 3000 } );		
 		//--------------------------------------------------------------------------------------------------------------------------------------------------//
 
 
